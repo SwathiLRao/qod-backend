@@ -29,5 +29,12 @@ spec:
               value: user
             - name: DB_PASS
               value: pass
+          resources:
+              limits:
+                cpu: 200m
+                memory: 256Mi
+              requests:
+                cpu: 200m
+                memory: 256Mi
           imagePullPolicy: Always
       restartPolicy: Always
