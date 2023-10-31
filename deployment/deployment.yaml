@@ -32,9 +32,9 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 11m
-            memory: 156Mi
+            cpu: 200m
+            memory: 256Mi
           requests:
-            cpu: 11m
-            memory: 28Mi
+            cpu: 200m
+            memory: 256Mi
       restartPolicy: Always
