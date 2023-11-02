@@ -6,7 +6,7 @@ metadata:
     tier: api
   name: qod-api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: qod-api
@@ -32,9 +32,30 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 200m
+            cpu: 800m
             memory: 256Mi
           requests:
-            cpu: 200m
+            cpu: 800m
+            memory: 256Mi
+      - env:
+        - name: DB_HOST
+          value: qod-db
+        - name: DB_USER
+          value: user
+        - name: DB_PASS
+          value: pass
+        image: saianilkumardeyyala/qod-api
+        imagePullPolicy: Always
+        name: qod-api
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 800m
+            memory: 256Mi
+          requests:
+            cpu: 800m
             memory: 256Mi
       restartPolicy: Always
