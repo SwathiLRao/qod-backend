@@ -1,12 +1,12 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
+  name: qod-api
   labels:
     app: qod-api
     tier: api
-  name: qod-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: qod-api
@@ -16,46 +16,18 @@ spec:
         app: qod-api
     spec:
       containers:
-      - env:
-        - name: DB_HOST
-          value: qod-db
-        - name: DB_USER
-          value: user
-        - name: DB_PASS
-          value: pass
-        image: saianilkumardeyyala/qod-api
-        imagePullPolicy: Always
-        name: qod-api
-        ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-        resources:
-          limits:
-            cpu: 10m
-            memory: 28Mi
-          requests:
-            cpu: 10m
-            memory: 28Mi
-      - env:
-        - name: DB_HOST
-          value: qod-db
-        - name: DB_USER
-          value: user
-        - name: DB_PASS
-          value: pass
-        image: saianilkumardeyyala/qod-api
-        imagePullPolicy: Always
-        name: qod-api
-        ports:
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-        resources:
-          limits:
-            cpu: 10m
-            memory: 28Mi
-          requests:
-            cpu: 10m
-            memory: 28Mi
+        - name: qod-api
+          image: saianilkumardeyyala/qod-api
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: DB_HOST
+              value: qod-db
+            - name: DB_USER
+              value: user
+            - name: DB_PASS
+              value: pass
+          imagePullPolicy: Always
       restartPolicy: Always
