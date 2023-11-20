@@ -31,10 +31,10 @@ spec:
               value: pass
           resources:
             limits:
-              cpu: 100m
-              memory: 200Mi
+              cpu: 11m
+              memory: 28Mi
             requests:
-              cpu: 100m
-              memory: 200Mi
+              cpu: 11m
+              memory: 28Mi
           imagePullPolicy: Always
       restartPolicy: Always
